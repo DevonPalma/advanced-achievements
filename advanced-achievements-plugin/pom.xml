@@ -96,6 +96,11 @@
 			<artifactId>dagger</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.gmail.nossr50.mcMMO</groupId>
+			<artifactId>mcMMO</artifactId>
+			<version>2.1.154</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>

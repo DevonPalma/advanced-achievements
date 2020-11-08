@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.inject.Singleton;
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.hm.achievement.api.AdvancedAchievementsAPI;
@@ -20,6 +21,8 @@ import com.hm.achievement.module.ReloadableModule;
 import com.hm.achievement.module.ServerVersionModule;
 import com.hm.achievement.module.UpdateCheckerModule;
 
+import com.gmail.nossr50.mcMMO;
+
 import dagger.BindsInstance;
 import dagger.Component;
 
@@ -31,6 +34,13 @@ import dagger.Component;
  * @author Pyves
  */
 public class AdvancedAchievements extends JavaPlugin {
+
+
+	private static mcMMO mcmmo;
+
+	public static mcMMO getMcmmo() {
+		return mcmmo;
+	}
 
 	private PluginLoader pluginLoader;
 	private AdvancedAchievementsAPI advancedAchievementsAPI;
@@ -57,6 +67,12 @@ public class AdvancedAchievements extends JavaPlugin {
 
 		getLogger().info(
 				"Plugin has finished loading and is ready to run! Took " + (System.currentTimeMillis() - startTime) + "ms.");
+
+
+		PluginManager pluginManager = getServer().getPluginManager();
+		if (pluginManager.isPluginEnabled("mcMMO")) {
+			mcmmo = (mcMMO) pluginManager.getPlugin("mcMMO");
+		}
 	}
 
 	@Override
